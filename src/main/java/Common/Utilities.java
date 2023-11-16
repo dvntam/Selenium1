@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Utilities {
     public static String getProjectPath() {
-    String projectPath = new File("C:\\Users\\Ngan Tam\\Downloads\\SeleniumLevel1\\Selenium_1").getAbsolutePath();
+    String projectPath = new File("F:\\TestAutomation\\Selenium_1").getAbsolutePath();
     return projectPath;
     }
 }

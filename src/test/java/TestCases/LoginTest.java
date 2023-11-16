@@ -34,7 +34,7 @@ public class LoginTest {
     }
 
     @Test
-    public void userCanLogIntoRailwayWithValidCredentials() {
+    public void TC01() {
         // Step 1: Open the home page
         HomePage homePage = new HomePage();
         homePage.open();
@@ -54,27 +54,20 @@ public class LoginTest {
         Assert.assertEquals(actualWelcomeMessage, expectedWelcomeMessage, "Welcome message is not displayed");
     }
 
-//    public void TC01() {
-//        System.out.println("TC01- User can log into Railway with valid HomePage username and password");
-//        HomePage homePage = new HomePage();
-//        homePage.open();
-//
-//        LoginPage loginPage = homePage.gotoLoginPage();
-//        String actualMsg = loginPage.login(Constant.USERNAME, Constant. PASSWORD).getWelcomeMessage();
-//        String expectedMsg = "Welcome"+ Constant.USERNAME;
-//
-//        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed");
-//    }
 //    public void TC02(){
 //        System.out.println("TC02 -User can't login with blank \"Username\" textbox");
 //        HomePage homePage = new HomePage();
 //        homePage.open();
 //
 //        LoginPage loginPage = homePage.gotoLoginPage();
-//        String actualMsg = loginPage.login(Constant.USERNAME ,Constant.PASSWORD).getWelcomeMessage();
+//        String validUsername = "";
+//        String validPassword = "123456789";
+//        String expectedWelcomeMessage = "Welcome " + validUsername;
 //
-//        Assert.assertEquals( actualMsg,"There was a problem with your login and/or errors exist in your form.");}
-
+//        String actualWelcomeMessage = loginPage.login(validUsername, validPassword).getWelcomeMessage();
+//
+//        Assert.assertEquals( actualWelcomeMessage,expectedWelcomeMessage,"There was a problem with your login and/or errors exist in your form.");}
+//
 
 
 }
