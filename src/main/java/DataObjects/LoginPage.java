@@ -11,6 +11,7 @@ public class LoginPage extends GeneralPage {
     private final By _btnLogin = By.xpath("//input[@value = 'login']");
 
     //Elements
+
     public WebElement getTxtUsername(){
         return Constant.WEBDRIVER.findElement(_txtUsername);
     }
