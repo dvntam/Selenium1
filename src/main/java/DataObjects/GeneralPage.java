@@ -51,9 +51,9 @@ public class GeneralPage {
         this.tabRegister().click();
         return new RegisterPage();
     }
-    public boolean gotoChangePassword(){
-        this.tabChangePassword().isDisplayed();
-        return true;
+    public ChangePasswordPage gotoChangePassword(){
+        this.tabChangePassword().click();
+        return new ChangePasswordPage();
     }
 
 

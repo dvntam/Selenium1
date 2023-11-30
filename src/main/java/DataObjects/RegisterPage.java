@@ -10,7 +10,7 @@ public class RegisterPage extends HomePage{
     private final By _txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
     private final By _txtPID = By.xpath("//input[@id='pid']");
     private final By _btnRegister = By.xpath("//input[@value = 'Register']");
-    private final By lblSuccessMessage = By.xpath("//div[@id='content']");
+    private final By lblSuccessMessage = By.xpath("//h1[normalize-space()='Welcome to Safe Railway']");
     private final By lblErrorMessage = By.xpath("//p[@class='message error']");
     private final By lblValidationError = By.xpath("//label[contains(text(), 'Invalid password length') or contains(text(), 'Invalid ID length')]");
 
@@ -40,10 +40,8 @@ public class RegisterPage extends HomePage{
         return Constant.WEBDRIVER.findElement(lblValidationError);
     }
 
-    public String getSuccessMessage(){
-        return this.getlblWelcomeMessage().getText();
-    }
-    public HomePage register(String email, String password, String confirmPassword, String PIP){
+
+    public String register(String email, String password, String confirmPassword, String PIP){
         //Register information
         this.getTxtEmail().sendKeys(email);
         this.getTxtPassword().sendKeys(password);
@@ -51,6 +49,7 @@ public class RegisterPage extends HomePage{
         this.getTxtPID().sendKeys(PIP);
         this.getBtnRegister().click();
         //show message
-        return new HomePage();
+        return getlblSuccessMessage().getText();
+
     }
 }

@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TC08 {
     WebDriver driver;
-    String PathScreenshot = System.getProperty("user.dir") + "/Screenshot/";
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("Pre-condition");
@@ -32,38 +31,20 @@ public class TC08 {
     @Test
     public void TC08()  {
         HomePage homePage = new HomePage();
-        homePage.open();
+        homePage.open() ;
 
         System.out.println("TC_08 - User can't login with an account hasn't been activated");
         LoginPage loginPage = homePage.gotoLoginPage();
-        String username = "ngantam168@gmail.com";
-        String password= "123456789";
-        String actualWelcomeMessage = loginPage.login(username, password).getWelcomeMessage();
-        String title = driver.getTitle();
-        if (actualWelcomeMessage.contains("Login")){
-            System.out.println("User can not login");
-        }else {
-            System.out.println("user navigated to another page");
+        String username= "ngantam168@gmail.com";
+        String password = "123456789";
+        String actualWelcomeMessage = loginPage.login(username, username).getWelcomeMessage();
+        String expected = "Invalid username or password. Please try again.";
+        String actual = Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']")).getText();
+        if (actual.contains(expected)) {
+            System.out.println("Mess is displayed correctly");
+        } else {
+            System.out.println("mess is not displayed correctly");
         }
-//        driver.findElement(By.xpath("//span[normalize-space()='Login']")).click();
-//        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("12345678");
-//        driver.findElement(By.xpath("//input[@title='Login']")).click();
-//        String title = driver.getTitle();
-//        if (title.contains("Login")) {
-//            System.out.println("User can not login");
-//        } else {
-//            System.out.println("user navigated to another page");
-//        }
-//        String expected = "Invalid username or password. Please try again.";
-//        String actual = driver.findElement(By.xpath("//p[@class='message error LoginForm']")).getText();
-//        if (actual.contains(expected)) {
-//            System.out.println("Mess is displayed correctly");
-//        } else {
-//            System.out.println("mess is not displayed correctly");
-//        }
-//        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        FileHandler.copy(scrFile, new File(PathScreenshot + "TC_08 - User can't login with an account hasn't been activated.png"));
-//        driver.close();
     }
 
 }
