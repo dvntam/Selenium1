@@ -5,10 +5,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends GeneralPage{
+
         //Locators
         private final By _lblMyTicket = By.xpath("//*[@id=\"content\"]/h1");
         public WebElement getLblMyTicket(){
         return Constant.WEBDRIVER.findElement(_lblMyTicket);
     }
+    public HomePage lblmyticket(String content){
+            this.getLblMyTicket().sendKeys(content);
+            return new HomePage();
+        }
+
 
 }
