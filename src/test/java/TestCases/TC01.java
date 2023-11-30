@@ -33,6 +33,7 @@ public class TC01 {
     }
     @Test
     public void TC01() {
+        System.out.println("TC01- User can log into Railway with valid username and password");
         // Step 1: Open the home page
         HomePage homePage = new HomePage();
         homePage.open();

@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -28,12 +29,17 @@ public class TC08 {
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
     }
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("Post-condition");
+        Constant.WEBDRIVER.quit();
+    }
     @Test
     public void TC08()  {
         HomePage homePage = new HomePage();
         homePage.open() ;
 
-        System.out.println("TC_08 - User can't login with an account hasn't been activated");
+        System.out.println("TC08 - User can't login with an account hasn't been activated");
         LoginPage loginPage = homePage.gotoLoginPage();
         String username= "ngantam168@gmail.com";
         String password = "123456789";

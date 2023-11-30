@@ -23,30 +23,28 @@ public class TC07 {
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
     }
-//    @AfterMethod
-//    public void afterMethod() {
-//        System.out.println("Post-condition");
-//        Constant.WEBDRIVER.quit();
-//    }
+        @AfterMethod
+    public void afterMethod() {
+        System.out.println("Post-condition");
+        Constant.WEBDRIVER.quit();
+    }
     @Test
-    public void TC7() {
-        // Step 1: Open the home page
-        HomePage homePage = new HomePage();
-        homePage.open();
-        // Step 2: Navigate to the register page
-        RegisterPage registerPage = homePage.gotoRegisterPage();
-        // Step 3: Attempt
-        String validEmail = "nt2@gmail.com";
-        String validPassword = "123456789";
-        String validConfirmPassword = "123456789";
-        String validPIP = "123456789";
+    public void TC7 () {
+        System.out.println("TC07 - User can create new account");
+            // Step 1: Open the home page
+            HomePage homePage = new HomePage();
+            homePage.open();
+            // Step 2: Navigate to the register page
+            RegisterPage registerPage = homePage.gotoRegisterPage();
+            // Step 3: Attempt
+            String validEmail = "nt7@gmail.com";
+            String validPassword = "123456789";
+            String validConfirmPassword = "123456789";
+            String validPIP = "12345678910";
+            String expectedWelcomeMessage = "Thank you for registering your account";
+            String actualWelcomeMessage = registerPage.register(validEmail, validPassword, validConfirmPassword, validPIP).getlblRegisMsg().getText();
 
-        String message = registerPage.register(validEmail, validPassword, validConfirmPassword, validPIP);
-        System.out.println(message);
-        // Register and getting the success message
+            Assert.assertEquals(actualWelcomeMessage, expectedWelcomeMessage, "Welcome message is not displayed");
+        }
 
-        String actualSuccessMessage = registerPage.register(validEmail, validPassword, validConfirmPassword, validPIP);
-        System.out.println(actualSuccessMessage);
-
-    }
-    }
+}

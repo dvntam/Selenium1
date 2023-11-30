@@ -28,6 +28,7 @@ public class TC05 {
     }
     @Test
     public void TC05() {
+        System.out.println("TC05 - System shows message when user enters wrong password several times");
         // Step 1: Open the home page or any page from where login is initiated
         HomePage homePage = new HomePage();
         homePage.open();

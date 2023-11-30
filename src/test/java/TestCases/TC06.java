@@ -2,6 +2,7 @@ package TestCases;
 
 import Common.Constant;
 import Common.Utilities;
+import DataObjects.ChangePasswordPage;
 import DataObjects.HomePage;
 import DataObjects.LoginPage;
 import DataObjects.MyTicketPage;
@@ -23,40 +24,33 @@ public class TC06 {
         Constant.WEBDRIVER.manage().window().maximize();
     }
 
-    @AfterMethod
-    public void afterMethod() {
-        System.out.println("Post-condition");
-        Constant.WEBDRIVER.quit();
-    }
     WebElement driver;
     @Test
     public void TC06() {
+        System.out.println("TC06 - Additional pages display once user logged in");
         HomePage homePage = new HomePage();
         homePage.open();
-        // Step 2: Navigate to the login page
         LoginPage loginPage = homePage.gotoLoginPage();
-        // Step 3: Attempt to login with a valid username and password
-        String username = "ngantam168@gmail.com";
-        String password = "123456789";
-        // Logging in and getting the actual welcome message
-        HomePage actualWelcomeMessage = loginPage.login(username, password);
+        String Username = "ngantam168@gmail.com";
+        String Password ="123456789";
+        String actualMsg = loginPage.login(Username,Password).getWelcomeMessage();
 
         MyTicketPage myTicketPage = homePage.gotoMyTicketPage();
-       // Kiểm tra xem đã vào đúng trang ticket chưa
-        boolean headerpost = driver.findElement(By.xpath("//h1[normalize-space()='Manage ticket']")).isDisplayed();
-        if (headerpost == true) {
-            System.out.println("Đã đến trang My ticket");
+
+        boolean headerpost1 = Constant.WEBDRIVER.findElement(By.xpath("//h1[normalize-space()='Manage ticket']")).isDisplayed();
+        if (headerpost1 == true) {
+            System.out.println("This is My ticket Page");
         } else {
-            System.out.println("Không đến trang My ticket");
+            System.out.println("This not is My ticket Page");
         }
         // Click "Chane password"
-        WebElement change_password = driver.findElement(By.xpath("//span[normalize-space()='Change password']"));
-        change_password.click();
-        boolean headerpost2 = driver.findElement(By.xpath("//h1[normalize-space()='Change password']")).isDisplayed();
+        ChangePasswordPage changePasswordPage = homePage.gotoChangePassword();
+
+        boolean headerpost2 = Constant.WEBDRIVER.findElement(By.xpath("//h1[normalize-space()='Change password']")).isDisplayed();
         if (headerpost2 == true) {
-            System.out.println("Đã đến trang change password");
+            System.out.println("This is ChangePassword Page");
         } else {
-            System.out.println("Không đến trang change password");
+            System.out.println("This not is ChangePassword Page");
 
         }
     }
